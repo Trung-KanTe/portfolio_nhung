@@ -13,18 +13,17 @@ export default function WordReveal({ text, className = '', as: As = 'p', start =
 
     gsap.fromTo(
       words,
-      { opacity: 0.18, y: 8, filter: 'blur(2px)' },
+      { opacity: 0.18, y: 8 },
       {
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
         ease: 'none',
         stagger: 0.06,
         scrollTrigger: {
           trigger: scope.current,
           start,
           end,
-          scrub: 0.8,
+          scrub: 1.2,
         },
       },
     )
@@ -42,7 +41,7 @@ export default function WordReveal({ text, className = '', as: As = 'p', start =
           <span
             key={`w-${i}`}
             ref={(el) => (wordsRef.current[i] = el)}
-            className="inline-block will-change-transform"
+            className="inline-block"
           >
             {tok}
           </span>

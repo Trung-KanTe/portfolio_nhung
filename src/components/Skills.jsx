@@ -2,8 +2,6 @@ import { useRef } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { skillCategories } from '../data/portfolioData'
 import { WaterfallContainer, WaterfallItem, SectionEyebrow } from './WaterfallReveal'
-import { useGsapMatchMedia } from '../hooks/useGsap'
-import { gsap } from '../lib/gsap'
 
 const SPANS = [
   'md:col-span-7',
@@ -37,7 +35,6 @@ function SkillCard({ category, index }) {
 
   return (
     <WaterfallItem className={`${SPANS[index] ?? 'md:col-span-4'}`}>
-      <div data-skill-card className="h-full will-change-transform">
       <motion.div
         ref={ref}
         onMouseMove={onMove}
@@ -93,39 +90,13 @@ function SkillCard({ category, index }) {
           })}
         </div>
       </motion.div>
-      </div>
     </WaterfallItem>
   )
 }
 
 export default function Skills() {
-  const scope = useGsapMatchMedia(({ conditions }) => {
-    const { isDesktop } = conditions
-    if (!isDesktop) return
-
-    const cards = gsap.utils.toArray('[data-skill-card]')
-    cards.forEach((card, i) => {
-      // alternating depth parallax: even cards drift up slightly faster
-      const speed = i % 2 === 0 ? -40 : -18
-      gsap.fromTo(
-        card,
-        { y: 0 },
-        {
-          y: speed,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.2,
-          },
-        },
-      )
-    })
-  }, [])
-
   return (
-    <section id="skills" ref={scope} className="section-padding">
+    <section id="skills" className="section-padding">
       <div className="max-w-7xl mx-auto">
         <WaterfallContainer className="mb-12 max-w-2xl" amount={0.4}>
           <WaterfallItem>

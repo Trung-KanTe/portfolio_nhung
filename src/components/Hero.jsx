@@ -432,22 +432,22 @@ export default function Hero() {
               >
                 <div className="px-3 py-3">
                   <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
-                    Backend
+                    Hành chính
                   </p>
-                  <p className="font-medium text-slate-200">.NET · C# · SQL</p>
+                  <p className="font-medium text-slate-200">Văn phòng · Nhân sự · Pháp lý</p>
                 </div>
                 <div className="px-3 py-3 border-l" style={{ borderColor: 'var(--border-soft)' }}>
                   <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
-                    Frontend
+                    Chuyên ngành
                   </p>
-                  <p className="font-medium text-slate-200">Blazor · Angular · React</p>
+                  <p className="font-medium text-slate-200">Luật Kinh Tế · Tài Chính</p>
                 </div>
                 <div className="col-span-2 px-3 py-3 border-t" style={{ borderColor: 'var(--border-soft)' }}>
                   <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
-                    Focus
+                    Định hướng
                   </p>
                   <p className="font-medium text-slate-200 leading-relaxed">
-                    Scalable systems, clean architecture, performance.
+                    Quản lý văn phòng, hỗ trợ tuyển dụng, soạn thảo hợp đồng, nghiên cứu pháp luật.
                   </p>
                 </div>
               </div>

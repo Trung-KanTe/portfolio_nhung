@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { experiences } from '../data/portfolioData'
 import { WaterfallContainer, WaterfallItem, SectionEyebrow } from './WaterfallReveal'
 import { useGsapMatchMedia } from '../hooks/useGsap'
@@ -11,15 +11,10 @@ export default function Experience() {
     target: sectionRef,
     offset: ['start 80%', 'end 30%'],
   })
-  const lineProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 22,
-    mass: 0.4,
-  })
-  const lineHeight = useTransform(lineProgress, [0, 1], ['0%', '100%'])
+  // Use simple transform instead of spring - lighter on scroll
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
-  // Sticky-stack: each timeline card pins briefly, the next one
-  // glides up and stacks on top with a slight scale + brightness drop.
+  // Sticky-stack: batch all cards into a single ScrollTrigger batch
   const stackScope = useGsapMatchMedia(({ conditions }) => {
     const { isDesktop } = conditions
     if (!isDesktop) return
@@ -27,23 +22,27 @@ export default function Experience() {
     const cards = gsap.utils.toArray('[data-exp-card]')
     if (!cards.length) return
 
-    cards.forEach((card, i) => {
-      // last card doesn't get dimmed
-      if (i === cards.length - 1) return
-
-      gsap.to(card, {
-        scale: 0.94,
-        y: -36,
-        opacity: 0.45,
-        filter: 'blur(2px)',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 18%',
-          end: () => `+=${card.offsetHeight * 0.9}`,
-          scrub: 0.6,
-        },
-      })
+    // Use ScrollTrigger.batch for fewer instances
+    ScrollTrigger.batch(cards.slice(0, -1), {
+      start: 'top 18%',
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          scale: 0.94,
+          y: -36,
+          opacity: 0.45,
+          ease: 'power2.out',
+          duration: 0.4,
+        })
+      },
+      onLeaveBack: (batch) => {
+        gsap.to(batch, {
+          scale: 1,
+          y: 0,
+          opacity: 1,
+          ease: 'power2.out',
+          duration: 0.4,
+        })
+      },
     })
 
     return () => ScrollTrigger.refresh()
@@ -72,7 +71,7 @@ export default function Experience() {
           <motion.div
             aria-hidden="true"
             style={{ height: lineHeight }}
-            className="absolute left-6 top-0 w-[2px] origin-top will-change-transform pointer-events-none"
+            className="absolute left-6 top-0 w-[2px] origin-top pointer-events-none"
           >
             <div
               className="w-full h-full rounded-full"
@@ -95,7 +94,7 @@ export default function Experience() {
 
                 <div
                   data-exp-card
-                  className="glass-card-hover p-6 md:p-7 w-full origin-top will-change-transform"
+                  className="glass-card-hover p-6 md:p-7 w-full origin-top"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>

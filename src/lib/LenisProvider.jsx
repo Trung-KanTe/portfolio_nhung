@@ -17,7 +17,7 @@ export function LenisProvider({ children }) {
     if (reduce) return
 
     const instance = new Lenis({
-      duration: 1.15,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       smoothTouch: false,
@@ -26,10 +26,21 @@ export function LenisProvider({ children }) {
     lenisRef.current = instance
     setLenis(instance)
 
-    instance.on('scroll', ScrollTrigger.update)
+    // Throttle ScrollTrigger updates to avoid excessive recalculations
+    let ticking = false
+    instance.on('scroll', () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(() => {
+          ScrollTrigger.update()
+          ticking = false
+        })
+      }
+    })
+
     const tick = (time) => instance.raf(time * 1000)
     gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.lagSmoothing(500, 33) // allow lag smoothing to skip frames when behind
 
     return () => {
       gsap.ticker.remove(tick)

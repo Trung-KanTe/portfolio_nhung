@@ -1,12 +1,9 @@
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll()
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 18,
-    mass: 0.4,
-  })
+  // Direct transform without spring - avoids constant recalculation
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
     <>
@@ -20,7 +17,7 @@ export default function ScrollProgress() {
       <motion.div
         aria-hidden="true"
         style={{ scaleY, transformOrigin: 'top' }}
-        className="fixed top-0 right-3 z-40 w-[2px] h-screen rounded-full pointer-events-none hidden md:block will-change-transform"
+        className="fixed top-0 right-3 z-40 w-[2px] h-screen rounded-full pointer-events-none hidden md:block"
       >
         <div
           className="w-full h-full rounded-full"

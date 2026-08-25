@@ -1,37 +1,46 @@
+import { lazy, Suspense } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Skills from './components/Skills'
-import Education from './components/Education'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
 import WaterfallBackground from './components/WaterfallBackground'
-import ThreeBackground from './components/ThreeBackground'
 import ScrollProgress from './components/ScrollProgress'
 import { LenisProvider } from './lib/LenisProvider'
+
+// Lazy load below-fold components - not needed on initial render
+const About = lazy(() => import('./components/About'))
+const Experience = lazy(() => import('./components/Experience'))
+const Projects = lazy(() => import('./components/Projects'))
+const Skills = lazy(() => import('./components/Skills'))
+const Education = lazy(() => import('./components/Education'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
+const ThreeBackground = lazy(() => import('./components/ThreeBackground'))
 
 function App() {
   return (
     <LenisProvider>
       <div className="relative min-h-screen">
-        <ThreeBackground />
         <WaterfallBackground />
+        <Suspense fallback={null}>
+          <ThreeBackground />
+        </Suspense>
         <ScrollProgress />
 
         <div className="relative z-10">
           <Navbar />
           <main>
             <Hero />
-            <About />
-            <Experience />
-            <Projects />
-            <Skills />
-            <Education />
-            <Contact />
+            <Suspense fallback={null}>
+              <About />
+              <Experience />
+              <Projects />
+              <Skills />
+              <Education />
+              <Contact />
+            </Suspense>
           </main>
-          <Footer />
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </div>
       </div>
     </LenisProvider>

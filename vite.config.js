@@ -7,4 +7,16 @@ export default defineConfig({
     port: 3001,
     open: true,
   },
+  build: {
+    target: 'es2020',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-three': ['three', '@react-three/fiber'],
+          'vendor-animation': ['gsap', 'framer-motion', 'lenis'],
+          'vendor-react': ['react', 'react-dom'],
+        },
+      },
+    },
+  },
 })
