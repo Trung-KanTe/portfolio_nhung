@@ -96,7 +96,7 @@ export default function Education() {
           {awards && awards.length > 0 && (
             <>
               <WaterfallItem>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-slate-400 mt-4 mb-2">
+                <p className="text-[13px] uppercase tracking-[0.22em] text-slate-400 mt-4 mb-2">
                   Awards & Honors
                 </p>
               </WaterfallItem>
@@ -157,7 +157,7 @@ export default function Education() {
           {courses.length > 0 && (
             <>
               <WaterfallItem>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-slate-400 mt-4 mb-2">
+                <p className="text-[13px] uppercase tracking-[0.22em] text-slate-400 mt-4 mb-2">
                   Courses & Training
                 </p>
               </WaterfallItem>
@@ -180,7 +180,7 @@ export default function Education() {
                           className="w-full h-32 md:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
-                        <span className="absolute bottom-2 left-2 right-2 inline-flex items-center justify-center gap-1.5 text-[11px] font-medium text-white px-2 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
+                        <span className="absolute bottom-2 left-2 right-2 inline-flex items-center justify-center gap-1.5 text-[13px] font-medium text-white px-2 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
                           <HiOutlineDocumentText className="w-3.5 h-3.5" />
                           View certificate
                         </span>
@@ -213,7 +213,7 @@ export default function Education() {
                         </p>
                       )}
                       {course.certificateId && (
-                        <p className="text-[11px] text-slate-500 font-mono">
+                        <p className="text-[13px] text-slate-500 font-mono">
                           ID · {course.certificateId}
                         </p>
                       )}

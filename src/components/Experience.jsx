@@ -22,27 +22,32 @@ export default function Experience() {
     const cards = gsap.utils.toArray('[data-exp-card]')
     if (!cards.length) return
 
-    // Use ScrollTrigger.batch for fewer instances
-    ScrollTrigger.batch(cards.slice(0, -1), {
-      start: 'top 18%',
-      onEnter: (batch) => {
-        gsap.to(batch, {
-          scale: 0.94,
-          y: -36,
-          opacity: 0.45,
-          ease: 'power2.out',
-          duration: 0.4,
-        })
-      },
-      onLeaveBack: (batch) => {
-        gsap.to(batch, {
-          scale: 1,
-          y: 0,
-          opacity: 1,
-          ease: 'power2.out',
-          duration: 0.4,
-        })
-      },
+    // Pin each card individually so they stack without overlapping
+    cards.slice(0, -1).forEach((card, i) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 18%',
+        endTrigger: cards[cards.length - 1],
+        end: 'top 60%',
+        onEnter: () => {
+          gsap.to(card, {
+            scale: 0.96 - i * 0.01,
+            y: -(i + 1) * 8,
+            opacity: 0.5,
+            ease: 'power2.out',
+            duration: 0.4,
+          })
+        },
+        onLeaveBack: () => {
+          gsap.to(card, {
+            scale: 1,
+            y: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.4,
+          })
+        },
+      })
     })
 
     return () => ScrollTrigger.refresh()
@@ -84,12 +89,12 @@ export default function Experience() {
           </motion.div>
 
           <WaterfallContainer
-            className="space-y-8 md:space-y-16"
+            className="space-y-10 md:space-y-24"
             amount={0.1}
             staggerChildren={0.12}
           >
             {experiences.map((exp, i) => (
-              <WaterfallItem key={exp.company} className="relative md:sticky md:top-24" custom={i}>
+              <WaterfallItem key={exp.company} className="relative md:sticky md:top-28" custom={i}>
                 <div className="timeline-dot" />
 
                 <div
