@@ -187,23 +187,29 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #f472b6, #ec4899, #f43f5e, #22d3ee);
+    /* Brightened palette — avoids dark rose/red stops that sink into the bg */
+    background-image: linear-gradient(135deg, #fbcfe8, #f9a8d4, #f472b6, #67e8f9);
     background-size: 220% auto;
     animation: gradientX 8s ease infinite;
   }
 
   .gradient-text-shine {
     @apply bg-clip-text text-transparent;
+    /* Brightened palette so every part of the text stays legible on the dark
+       background. Light pink → pink → light cyan, no deep red/magenta stops. */
     background-image: linear-gradient(
       135deg,
-      #f472b6 0%,
-      #ec4899 25%,
-      #f43f5e 50%,
-      #22d3ee 75%,
-      #f472b6 100%
+      #fce7f3 0%,
+      #f9a8d4 22%,
+      #f472b6 48%,
+      #7dd3fc 74%,
+      #fce7f3 100%
     );
     background-size: 220% auto;
     animation: gradientX 7s ease infinite;
+    /* Dark halo lifts the translucent glyphs off the colorful background.
+       drop-shadow works on clipped text where text-shadow cannot. */
+    filter: drop-shadow(0 1px 10px rgba(7, 3, 24, 0.65));
   }
 
   .btn-primary {
@@ -444,6 +450,11 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 /* ── Light mode polish ──────────── */
 :root.light .gradient-text-shine {
   background-image: linear-gradient(135deg, #be185d, #db2777, #e11d8f, #0891b2);
+  filter: none;
+}
+
+:root.light .gradient-text {
+  filter: none;
 }
 
 :root.light .btn-primary {

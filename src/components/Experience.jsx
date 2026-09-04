@@ -2,8 +2,6 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { experiences } from '../data/portfolioData'
 import { WaterfallContainer, WaterfallItem, SectionEyebrow } from './WaterfallReveal'
-import { useGsapMatchMedia } from '../hooks/useGsap'
-import { gsap, ScrollTrigger } from '../lib/gsap'
 
 export default function Experience() {
   const sectionRef = useRef(null)
@@ -13,45 +11,6 @@ export default function Experience() {
   })
   // Use simple transform instead of spring - lighter on scroll
   const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
-
-  // Sticky-stack: batch all cards into a single ScrollTrigger batch
-  const stackScope = useGsapMatchMedia(({ conditions }) => {
-    const { isDesktop } = conditions
-    if (!isDesktop) return
-
-    const cards = gsap.utils.toArray('[data-exp-card]')
-    if (!cards.length) return
-
-    // Pin each card individually so they stack without overlapping
-    cards.slice(0, -1).forEach((card, i) => {
-      ScrollTrigger.create({
-        trigger: card,
-        start: 'top 18%',
-        endTrigger: cards[cards.length - 1],
-        end: 'top 60%',
-        onEnter: () => {
-          gsap.to(card, {
-            scale: 0.96 - i * 0.01,
-            y: -(i + 1) * 8,
-            opacity: 0.5,
-            ease: 'power2.out',
-            duration: 0.4,
-          })
-        },
-        onLeaveBack: () => {
-          gsap.to(card, {
-            scale: 1,
-            y: 0,
-            opacity: 1,
-            ease: 'power2.out',
-            duration: 0.4,
-          })
-        },
-      })
-    })
-
-    return () => ScrollTrigger.refresh()
-  }, [])
 
   return (
     <section id="experience" ref={sectionRef} className="section-padding">
@@ -69,7 +28,7 @@ export default function Experience() {
           </WaterfallItem>
         </WaterfallContainer>
 
-        <div ref={stackScope} className="relative pl-14 md:pl-16">
+        <div className="relative pl-14 md:pl-16">
           {/* Static rail */}
           <div className="timeline-line" />
           {/* Animated draw-on-scroll fill */}
@@ -89,12 +48,12 @@ export default function Experience() {
           </motion.div>
 
           <WaterfallContainer
-            className="space-y-10 md:space-y-24"
+            className="space-y-10 md:space-y-12"
             amount={0.1}
             staggerChildren={0.12}
           >
             {experiences.map((exp, i) => (
-              <WaterfallItem key={exp.company} className="relative md:sticky md:top-28" custom={i}>
+              <WaterfallItem key={exp.company} className="relative" custom={i}>
                 <div className="timeline-dot" />
 
                 <div
