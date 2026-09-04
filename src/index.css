@@ -199,23 +199,24 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 
   .gradient-text-shine {
     @apply bg-clip-text text-transparent;
-    /* Matches the Download CV button palette (btn-primary):
-       pink → hot pink → rose-red. */
+    /* Exactly matches the Download CV button (btn-primary):
+       pink → hot pink → rose-red, static position so the full deep
+       palette shows on the glyphs (no sliding animation that would
+       expose only the lighter pink stop). */
     background-image: linear-gradient(
       135deg,
       #f472b6 0%,
-      #ec4899 45%,
+      #ec4899 35%,
       #f43f5e 100%
     );
-    background-size: 220% auto;
-    animation: gradientX 7s ease infinite;
+    background-size: 100% 100%;
+    background-position: 0% 50%;
     /* Dark halo lifts the glyphs off the dark background so the deeper
        button colors stay legible as text.
        drop-shadow works on clipped text where text-shadow cannot. */
     filter:
-      drop-shadow(0 1px 2px rgba(7, 3, 24, 1))
-      drop-shadow(0 0 6px rgba(7, 3, 24, 0.95))
-      drop-shadow(0 3px 18px rgba(7, 3, 24, 0.85));
+      drop-shadow(0 1px 2px rgba(7, 3, 24, 0.95))
+      drop-shadow(0 2px 12px rgba(7, 3, 24, 0.7));
   }
 
   /* Bright gradient for smaller accent text (e.g. company names, sub-labels).
