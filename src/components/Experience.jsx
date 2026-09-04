@@ -65,16 +65,7 @@ export default function Experience() {
                       <h3 className="text-base font-semibold text-slate-100">
                         {exp.role}
                       </h3>
-                      <p
-                        className="text-sm font-medium mt-0.5"
-                        style={{
-                          backgroundImage:
-                            'linear-gradient(90deg, var(--aurora-1), var(--aurora-3))',
-                          WebkitBackgroundClip: 'text',
-                          backgroundClip: 'text',
-                          color: 'transparent',
-                        }}
-                      >
+                      <p className="text-sm font-medium mt-0.5 gradient-text-bright">
                         {exp.company}
                       </p>
                     </div>

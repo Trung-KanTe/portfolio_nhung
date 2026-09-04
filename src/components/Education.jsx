@@ -54,16 +54,7 @@ export default function Education() {
                 01
               </span>
             </div>
-            <p
-              className="text-sm font-medium mb-1"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, var(--aurora-1), var(--aurora-3))',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
+            <p className="text-sm font-medium mb-1 gradient-text-bright">
               {education.school}
             </p>
             <p className="text-xs text-slate-400 font-mono mb-4">{education.period}</p>
@@ -193,16 +184,7 @@ export default function Education() {
                       <p className="text-sm font-semibold text-slate-100 mb-1">
                         {course.name}
                       </p>
-                      <p
-                        className="text-sm font-medium mb-1"
-                        style={{
-                          backgroundImage:
-                            'linear-gradient(90deg, var(--aurora-1), var(--aurora-3))',
-                          WebkitBackgroundClip: 'text',
-                          backgroundClip: 'text',
-                          color: 'transparent',
-                        }}
-                      >
+                      <p className="text-sm font-medium mb-1 gradient-text-bright">
                         {course.issuer}
                       </p>
                       <p className="text-xs text-slate-400 font-mono mb-3">
