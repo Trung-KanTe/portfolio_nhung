@@ -3,12 +3,12 @@ import usePerfTier from '../hooks/usePerfTier'
 
 // Reduced from 10 sheets to 6
 const SHEETS = [
-  { left: '5%',  width: 120, blur: 30, delay: 0,    dur: 10, color: 'rgba(236,72,153,0.20)' },
-  { left: '20%', width: 140, blur: 34, delay: -6,   dur: 9,  color: 'rgba(34,211,238,0.15)' },
-  { left: '38%', width: 100, blur: 28, delay: -1.5, dur: 11, color: 'rgba(244,114,182,0.20)' },
-  { left: '55%', width: 110, blur: 30, delay: -2,   dur: 10, color: 'rgba(236,72,153,0.18)' },
-  { left: '72%', width: 130, blur: 34, delay: -7,   dur: 12, color: 'rgba(34,211,238,0.16)' },
-  { left: '88%', width: 95,  blur: 26, delay: -5,   dur: 9,  color: 'rgba(244,63,94,0.18)' },
+  { left: '5%',  width: 120, blur: 30, delay: 0,    dur: 10, color: 'rgba(236,72,153,0.13)' },
+  { left: '20%', width: 140, blur: 34, delay: -6,   dur: 9,  color: 'rgba(34,211,238,0.10)' },
+  { left: '38%', width: 100, blur: 28, delay: -1.5, dur: 11, color: 'rgba(244,114,182,0.13)' },
+  { left: '55%', width: 110, blur: 30, delay: -2,   dur: 10, color: 'rgba(236,72,153,0.12)' },
+  { left: '72%', width: 130, blur: 34, delay: -7,   dur: 12, color: 'rgba(34,211,238,0.11)' },
+  { left: '88%', width: 95,  blur: 26, delay: -5,   dur: 9,  color: 'rgba(244,63,94,0.12)' },
 ]
 
 // Reduced from 9 sparkles to 5
@@ -142,7 +142,7 @@ function WaterfallBackground() {
       <div
         className="absolute -top-40 -left-32 w-[44vmax] h-[44vmax] rounded-full mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle, rgba(219,39,119,0.28), transparent 60%)',
+          background: 'radial-gradient(circle, rgba(219,39,119,0.20), transparent 60%)',
           filter: 'blur(80px)',
           animation: 'auroraDrift 22s ease-in-out infinite',
           willChange: 'transform',
@@ -151,7 +151,7 @@ function WaterfallBackground() {
       <div
         className="absolute top-1/4 -right-32 w-[40vmax] h-[40vmax] rounded-full mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle, rgba(34,211,238,0.20), transparent 60%)',
+          background: 'radial-gradient(circle, rgba(34,211,238,0.14), transparent 60%)',
           filter: 'blur(90px)',
           animation: 'auroraDrift 28s ease-in-out -7s infinite',
           willChange: 'transform',
@@ -197,8 +197,15 @@ function WaterfallBackground() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse at center, rgba(7,3,24,0.62) 0%, rgba(7,3,24,0.72) 55%, rgba(7,3,24,0.82) 100%)',
+            'radial-gradient(ellipse at center, rgba(6,3,20,0.78) 0%, rgba(6,3,20,0.84) 55%, rgba(6,3,20,0.9) 100%)',
         }}
+      />
+
+      {/* Extra flat veil — a uniform darken pass on top of the vignette so the
+          bright animated layers never wash out text near the edges either. */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: 'rgba(6, 3, 20, 0.28)' }}
       />
     </div>
   )

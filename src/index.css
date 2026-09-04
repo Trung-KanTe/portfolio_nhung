@@ -16,9 +16,9 @@
   --border-strong: rgba(244, 114, 182, 0.5);
   --text-strong: #ffffff;
   --text-primary: #ffffff;
-  --text-secondary: #f1f5f9;
-  --text-muted: #e2e8f0;
-  --text-subtle: #cbd5e1;
+  --text-secondary: #f5f7fb;
+  --text-muted: #edf1f7;
+  --text-subtle: #dbe2ee;
   --scrollbar-track: #07051a;
   --shadow-nav: 0 12px 40px rgba(0, 0, 0, 0.45);
   --aurora-1: #db2777;
@@ -109,8 +109,12 @@ body [class~="text-white"]      { color: var(--text-strong); }
 body [class~="text-slate-100"]  { color: var(--text-strong); }
 body [class~="text-slate-200"]  { color: var(--text-primary); }
 body [class~="text-slate-300"]  { color: var(--text-secondary); }
-body [class~="text-slate-400"]  { color: var(--text-muted); }
-body [class~="text-slate-500"]  { color: var(--text-subtle); }
+body [class~="text-slate-400"]  { color: var(--text-secondary); }
+body [class~="text-slate-500"]  { color: var(--text-muted); }
+body [class~="text-slate-600"]  { color: var(--text-subtle); }
+/* opacity-suffixed slate variants used inline (e.g. text-slate-300/90) */
+body [class~="text-slate-300/90"] { color: var(--text-secondary); }
+body [class~="text-slate-300/80"] { color: var(--text-secondary); }
 
 body [class~="bg-dark-900"]     { background-color: var(--bg-app); }
 body [class~="bg-dark-900/80"]  { background-color: var(--bg-app-80); }

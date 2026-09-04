@@ -85,7 +85,7 @@ function Terrain() {
         wireframe
         vertexColors
         transparent
-        opacity={0.55}
+        opacity={0.38}
         depthWrite={false}
       />
     </mesh>
