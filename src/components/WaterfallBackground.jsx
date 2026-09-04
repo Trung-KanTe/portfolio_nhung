@@ -190,12 +190,14 @@ function WaterfallBackground() {
         }}
       />
 
-      {/* Vignette */}
+      {/* Readability scrim — darkens the whole backdrop so body text stays legible
+          against the colorful animated layers. Center is intentionally darker
+          than a normal vignette because that is where the content sits. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse at center, rgba(7,3,24,0.35) 0%, rgba(7,3,24,0.55) 60%, rgba(7,3,24,0.75) 100%)',
+            'radial-gradient(ellipse at center, rgba(7,3,24,0.62) 0%, rgba(7,3,24,0.72) 55%, rgba(7,3,24,0.82) 100%)',
         }}
       />
     </div>

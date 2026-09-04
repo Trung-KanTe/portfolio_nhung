@@ -71,18 +71,23 @@
     overflow-x: hidden;
   }
 
-  /* Subtle dark glow under body text — helps legibility against the colorful background */
+  /* Dark glow under body text — helps legibility against the colorful background.
+     Two stacked shadows: a tight one for crisp edge contrast, plus a wider halo. */
   main p,
   main li,
   main h2,
-  main h3 {
-    text-shadow: 0 1px 18px rgba(7, 3, 24, 0.55);
+  main h3,
+  main h4,
+  main span {
+    text-shadow: 0 1px 2px rgba(7, 3, 24, 0.8), 0 2px 22px rgba(7, 3, 24, 0.65);
   }
 
   :root.light main p,
   :root.light main li,
   :root.light main h2,
-  :root.light main h3 {
+  :root.light main h3,
+  :root.light main h4,
+  :root.light main span {
     text-shadow: none;
   }
 
