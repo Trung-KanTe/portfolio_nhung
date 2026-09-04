@@ -84,10 +84,10 @@ export default function Navbar() {
               className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white text-lg transition-all duration-300 group-hover:scale-105"
               style={{
                 background:
-                  'linear-gradient(135deg, #6366f1 0%, #8b5cf6 35%, #d946ef 70%, #22d3ee 100%)',
+                  'linear-gradient(135deg, #db2777 0%, #ec4899 35%, #f43f5e 70%, #22d3ee 100%)',
                 backgroundSize: '180% 180%',
                 boxShadow:
-                  'inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px -8px rgba(217,70,239,0.4)',
+                  'inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px -8px rgba(219,39,119,0.4)',
               }}
             >
               N

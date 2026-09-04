@@ -106,7 +106,7 @@ function SpotlightCard({ children, className = '' }) {
   const background = useTransform(
     [mx, my],
     ([x, y]) =>
-      `radial-gradient(380px circle at ${x}px ${y}px, rgba(167,139,250,0.18), transparent 60%)`
+      `radial-gradient(380px circle at ${x}px ${y}px, rgba(236,72,153,0.18), transparent 60%)`
   )
 
   return (
@@ -313,9 +313,9 @@ export default function Hero() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {stats.map((item, i) => {
                 const tint = [
-                  { dot: 'var(--aurora-4)', glow: 'rgba(99,102,241,0.22)' },
-                  { dot: 'var(--aurora-1)', glow: 'rgba(139,92,246,0.22)' },
-                  { dot: 'var(--aurora-3)', glow: 'rgba(217,70,239,0.22)' },
+                  { dot: 'var(--aurora-4)', glow: 'rgba(190,24,93,0.22)' },
+                  { dot: 'var(--aurora-1)', glow: 'rgba(219,39,119,0.22)' },
+                  { dot: 'var(--aurora-3)', glow: 'rgba(244,63,94,0.22)' },
                   { dot: 'var(--aurora-2)', glow: 'rgba(34,211,238,0.22)' },
                 ][i]
                 return (
@@ -385,7 +385,7 @@ export default function Hero() {
             className="absolute -inset-8 rounded-[2.5rem] opacity-50 blur-3xl pointer-events-none"
             style={{
               background:
-                'radial-gradient(60% 50% at 30% 30%, rgba(99,102,241,0.45), transparent), radial-gradient(50% 50% at 70% 70%, rgba(236,72,153,0.28), transparent)',
+                'radial-gradient(60% 50% at 30% 30%, rgba(219,39,119,0.45), transparent), radial-gradient(50% 50% at 70% 70%, rgba(244,63,94,0.28), transparent)',
             }}
           />
 

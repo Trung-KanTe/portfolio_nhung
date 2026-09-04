@@ -46,22 +46,20 @@ export const experiences = [
       {
         name: 'Quản lý Văn phòng & Hành chính',
         details: [
-          'Mua sắm và quản lý tài sản, thiết bị; theo dõi vật phẩm dùng chung. Liên hệ, làm việc với nhà cung cấp.',
-          'Quản lý văn phòng phẩm, thư từ — công văn.',
-          'Kiểm tra hóa đơn, tạo PO; kiểm soát chi phí hành chính & pantry.',
-          'Sắp xếp về máy bay, khách sạn công tác theo quy định.',
-          'Phụ trách hiệu quả, gửi đến hàng ngày.',
+          'Mua sắm và quản lý tài sản, thiết bị; theo dõi vật phẩm dùng chung; liên hệ và làm việc với nhà cung cấp.',
+          'Quản lý văn phòng phẩm, thư từ và công văn đến - đi.',
+          'Kiểm tra hóa đơn, tạo đề nghị mua hàng (PO); kiểm soát chi phí hành chính và pantry.',
+          'Sắp xếp vé máy bay, khách sạn cho công tác theo đúng quy định công ty.',
+          'Đối soát và xử lý thư từ, chứng từ hành chính hàng ngày.',
         ],
       },
       {
         name: 'Hỗ trợ Nhân sự & Tuyển dụng',
         details: [
-          'Hỗ trợ soạn thảo hợp đồng liên quan đến cho thuê văn phòng.',
-          'Hệ thống hỗ trợ dịch vụ gửi đến hàng ngày.',
-          'Hỗ trợ các công việc hành chính chính văn phòng đối soát thư từ, hợp đồng.',
-          'Quản lý thẻ Grab, xanh SM của nhân sự.',
-          'Sinh nhật, thăm hỏi đau ốm nhân viên.',
-          'Tuyển dụng nội bộ. Onboard nhân sự mới. Truyền thông, sự kiện nội bộ.',
+          'Hỗ trợ tuyển dụng nội bộ và onboard nhân sự mới.',
+          'Quản lý thẻ Grab, Xanh SM cho nhân sự.',
+          'Tổ chức sinh nhật, thăm hỏi ốm đau và các hoạt động chăm lo nhân viên.',
+          'Truyền thông nội bộ và tổ chức sự kiện cho công ty.',
         ],
       },
     ],
@@ -77,8 +75,8 @@ export const experiences = [
       {
         name: 'Hỗ trợ phòng ban Hành chính - Nhân sự',
         details: [
-          'Hỗ trợ tạo quy trình cho phòng ban.',
-          'Hỗ trợ trả các công việc hành chính chính văn phòng đối soát thư từ, hợp đồng dịch vụ gửi đến hàng ngày.',
+          'Hỗ trợ xây dựng và chuẩn hóa quy trình cho phòng ban.',
+          'Hỗ trợ xử lý công việc hành chính văn phòng: đối soát thư từ, hợp đồng dịch vụ nhận hàng ngày.',
         ],
       },
     ],
@@ -92,11 +90,11 @@ export const experiences = [
     type: 'past',
     projects: [
       {
-        name: 'Thực tập sinh vị trí hành chính - pháp lý công ty',
+        name: 'Thực tập sinh Hành chính - Pháp lý',
         details: [
-          'Hỗ trợ soạn thảo hợp đồng liên quan đến cho thuê văn phòng.',
-          'Hỗ trợ tạo quy trình cho phòng ban.',
-          'Hỗ trợ trả các công việc hành chính chính văn phòng đối soát thư từ, hợp đồng dịch vụ gửi đến hàng ngày.',
+          'Hỗ trợ soạn thảo hợp đồng, tập trung vào hợp đồng thuê văn phòng.',
+          'Hỗ trợ xây dựng quy trình làm việc cho phòng ban.',
+          'Đối soát thư từ, hợp đồng dịch vụ và xử lý công việc hành chính văn phòng hàng ngày.',
         ],
       },
     ],

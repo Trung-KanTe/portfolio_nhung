@@ -30,7 +30,7 @@ function SkillCard({ category, index }) {
   const spotlight = useTransform(
     [mx, my],
     ([x, y]) =>
-      `radial-gradient(360px circle at ${x}px ${y}px, rgba(167,139,250,0.16), transparent 55%)`
+      `radial-gradient(360px circle at ${x}px ${y}px, rgba(236,72,153,0.16), transparent 55%)`
   )
 
   return (
@@ -55,7 +55,7 @@ function SkillCard({ category, index }) {
               className="w-9 h-9 rounded-xl flex items-center justify-center"
               style={{
                 background:
-                  'linear-gradient(135deg, rgba(99,102,241,0.18), rgba(217,70,239,0.18))',
+                  'linear-gradient(135deg, rgba(219,39,119,0.18), rgba(244,63,94,0.18))',
                 border: '1px solid var(--border-soft)',
                 color: 'var(--aurora-1)',
               }}

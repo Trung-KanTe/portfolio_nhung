@@ -42,7 +42,7 @@ export default function Experience() {
               style={{
                 background:
                   'linear-gradient(to bottom, var(--aurora-1) 0%, var(--aurora-3) 50%, var(--aurora-2) 100%)',
-                boxShadow: '0 0 18px rgba(124,58,237,0.55)',
+                boxShadow: '0 0 18px rgba(219,39,119,0.55)',
               }}
             />
           </motion.div>

@@ -94,7 +94,7 @@ export default function Contact() {
                   className="w-9 h-9 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(217,70,239,0.18))',
+                      'linear-gradient(135deg, rgba(219,39,119,0.2), rgba(244,63,94,0.18))',
                     border: '1px solid var(--border-soft)',
                     color: 'var(--aurora-1)',
                   }}
@@ -111,7 +111,7 @@ export default function Contact() {
                   className="w-9 h-9 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(217,70,239,0.18))',
+                      'linear-gradient(135deg, rgba(219,39,119,0.2), rgba(244,63,94,0.18))',
                     border: '1px solid var(--border-soft)',
                     color: 'var(--aurora-1)',
                   }}

@@ -68,21 +68,23 @@ export default function Education() {
             </p>
             <p className="text-xs text-slate-400 font-mono mb-4">{education.period}</p>
             <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span
-                className="px-3 py-1 rounded-full font-mono"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border-soft)',
-                  color: 'var(--text-secondary)',
-                }}
-              >
-                GPA · {education.gpa}
-              </span>
+              {education.gpa && (
+                <span
+                  className="px-3 py-1 rounded-full font-mono"
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border-soft)',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
+                  GPA · {education.gpa}
+                </span>
+              )}
               <span
                 className="px-3 py-1 rounded-full"
                 style={{
                   background:
-                    'linear-gradient(90deg, rgba(124,58,237,0.18), rgba(217,70,239,0.18))',
+                    'linear-gradient(90deg, rgba(219,39,119,0.18), rgba(244,63,94,0.18))',
                   border: '1px solid var(--border-mid)',
                   color: 'var(--text-strong)',
                 }}
@@ -106,14 +108,14 @@ export default function Education() {
                   className="glass-card-hover p-6 md:p-7 flex items-start gap-4"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(251,191,36,0.06), rgba(217,70,239,0.04))',
+                      'linear-gradient(135deg, rgba(251,191,36,0.06), rgba(244,63,94,0.04))',
                   }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{
                       background:
-                        'linear-gradient(135deg, rgba(251,191,36,0.18), rgba(217,70,239,0.18))',
+                        'linear-gradient(135deg, rgba(251,191,36,0.18), rgba(244,63,94,0.18))',
                       border: '1px solid rgba(251,191,36,0.35)',
                       color: '#fbbf24',
                     }}

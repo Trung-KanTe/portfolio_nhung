@@ -29,12 +29,12 @@ function ProjectCard({ project, index, layout }) {
   const spotlight = useTransform(
     [mx, my],
     ([x, y]) =>
-      `radial-gradient(420px circle at ${x}px ${y}px, rgba(167,139,250,0.16), transparent 55%)`
+      `radial-gradient(420px circle at ${x}px ${y}px, rgba(236,72,153,0.16), transparent 55%)`
   )
   const borderGlow = useTransform(
     [mx, my],
     ([x, y]) =>
-      `radial-gradient(180px circle at ${x}px ${y}px, rgba(167,139,250,0.55), transparent 70%)`
+      `radial-gradient(180px circle at ${x}px ${y}px, rgba(236,72,153,0.55), transparent 70%)`
   )
 
   const number = String(index + 1).padStart(2, '0')
@@ -125,7 +125,7 @@ function ProjectCard({ project, index, layout }) {
               className="mt-4 inline-flex items-start gap-2 px-3 py-2 rounded-xl"
               style={{
                 background:
-                  'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(217,70,239,0.10))',
+                  'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(244,63,94,0.10))',
                 border: '1px solid rgba(251,191,36,0.35)',
               }}
             >
