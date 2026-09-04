@@ -38,11 +38,11 @@
   --border-soft: rgba(219, 39, 119, 0.24);
   --border-mid: rgba(219, 39, 119, 0.4);
   --border-strong: rgba(219, 39, 119, 0.55);
-  --text-strong: #2a0a1a;
-  --text-primary: #4b1b32;
-  --text-secondary: #812e57;
-  --text-muted: #be185d;
-  --text-subtle: #db2777;
+  --text-strong: #1f0714;
+  --text-primary: #35111f;
+  --text-secondary: #5c1c3a;
+  --text-muted: #7a1d45;
+  --text-subtle: #9d1f56;
   --scrollbar-track: #fce7f3;
   --shadow-nav: 0 12px 40px rgba(149, 29, 76, 0.1);
   --aurora-1: #db2777;
@@ -212,8 +212,11 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
     background-size: 220% auto;
     animation: gradientX 7s ease infinite;
     /* Dark halo lifts the translucent glyphs off the colorful background.
-       drop-shadow works on clipped text where text-shadow cannot. */
-    filter: drop-shadow(0 1px 10px rgba(7, 3, 24, 0.65));
+       drop-shadow works on clipped text where text-shadow cannot.
+       Stacked shadows: tight crisp edge + wider halo for reliable contrast. */
+    filter:
+      drop-shadow(0 1px 2px rgba(7, 3, 24, 0.9))
+      drop-shadow(0 2px 14px rgba(7, 3, 24, 0.7));
   }
 
   .btn-primary {
@@ -275,7 +278,7 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 
   .tech-pill {
     @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300;
-    color: var(--aurora-1);
+    color: #fbcfe8;
     background-color: var(--bg-chip);
     border: 1px solid var(--border-soft);
   }
@@ -291,7 +294,7 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
     @apply inline-flex items-center gap-2 mb-4;
   }
   .section-eyebrow-num {
-    @apply font-mono text-[11px] tracking-widest;
+    @apply font-mono text-xs tracking-widest;
     color: var(--aurora-1);
   }
   .section-eyebrow-rule {
@@ -299,7 +302,7 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
     background-color: var(--border-mid);
   }
   .section-eyebrow-label {
-    @apply text-[11px] uppercase tracking-[0.22em];
+    @apply text-xs uppercase tracking-[0.22em];
     color: var(--text-muted);
   }
 }
@@ -476,5 +479,7 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 }
 
 :root.light .tech-pill {
-  color: #be185d;
+  color: #9d174d;
+  background-color: rgba(157, 23, 77, 0.1);
+  border-color: rgba(157, 23, 77, 0.35);
 }

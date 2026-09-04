@@ -76,11 +76,11 @@ function ProjectCard({ project, index, layout }) {
 
         <div className="relative flex items-start justify-between gap-4 mb-5">
           <div className="flex items-baseline gap-3">
-            <span className="text-[11px] font-mono text-accent-violet/70 tracking-wider">
+            <span className="text-xs font-mono text-accent-violet/80 tracking-wider">
               {number}
             </span>
             {project.confidential && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider text-slate-400"
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] uppercase tracking-wider text-slate-300"
                 style={{
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-soft)',
@@ -97,14 +97,14 @@ function ProjectCard({ project, index, layout }) {
               href={project.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-accent-violet transition-colors group/link"
+              className="inline-flex items-center gap-1 text-xs text-slate-300 hover:text-accent-violet transition-colors group/link"
               aria-label={`View ${project.title} source code`}
             >
               <span>Code</span>
               <HiOutlineArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
             </a>
           ) : (
-            <span className="text-[11px] text-slate-500">Private</span>
+            <span className="text-xs text-slate-400">Private</span>
           )}
         </div>
 
@@ -112,11 +112,11 @@ function ProjectCard({ project, index, layout }) {
           <h3 className="font-semibold tracking-tight text-slate-100 mb-1.5 text-xl sm:text-2xl">
             {project.title}
           </h3>
-          <p className="text-[11px] uppercase tracking-[0.16em] text-slate-500 mb-4">
+          <p className="text-xs uppercase tracking-[0.16em] text-slate-400 mb-4">
             {project.subtitle}
           </p>
 
-          <p className="text-slate-300/85 leading-relaxed flex-1 text-sm sm:text-base max-w-[58ch]">
+          <p className="text-slate-300/85 leading-relaxed flex-1 text-[15px] sm:text-base max-w-[58ch]">
             {project.description}
           </p>
 
@@ -133,7 +133,7 @@ function ProjectCard({ project, index, layout }) {
                 className="w-4 h-4 mt-0.5 shrink-0"
                 style={{ color: '#fbbf24' }}
               />
-              <span className="text-[11px] font-medium leading-snug" style={{ color: '#fde68a' }}>
+              <span className="text-xs font-medium leading-snug" style={{ color: '#fde68a' }}>
                 {project.award}
               </span>
             </div>
@@ -145,7 +145,7 @@ function ProjectCard({ project, index, layout }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide text-slate-300"
+                className="px-2.5 py-1 rounded-full text-[11px] font-mono tracking-wide text-slate-300"
                 style={{
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-soft)',
@@ -238,7 +238,7 @@ export default function Projects() {
           </div>
 
           <div className="hidden md:flex flex-col items-end gap-2 pb-1">
-            <span className="font-mono text-[11px] text-slate-500 tracking-wider">
+            <span className="font-mono text-xs text-slate-400 tracking-wider">
               {String(projects.length).padStart(2, '0')} projects
             </span>
             <div className="relative h-px w-32 overflow-hidden bg-white/5 rounded-full">

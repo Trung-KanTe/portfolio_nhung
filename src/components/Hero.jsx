@@ -145,7 +145,7 @@ function MarqueeRow() {
         {items.map((t, i) => (
           <span
             key={`${t}-${i}`}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-[11px] font-medium tracking-wide text-slate-300"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-medium tracking-wide text-slate-300"
             style={{
               borderColor: 'var(--border-soft)',
               backgroundColor: 'var(--bg-card)',
@@ -187,7 +187,7 @@ export default function Hero() {
         >
           <motion.div variants={fadeUp}>
             <span
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] tracking-wide text-slate-300"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs tracking-wide text-slate-300"
               style={{
                 backgroundColor: 'var(--bg-card)',
                 border: '1px solid var(--border-soft)',
@@ -203,7 +203,7 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="text-[11px] uppercase tracking-[0.32em] text-accent-violet/90 typing-cursor min-h-[1rem]"
+            className="text-xs uppercase tracking-[0.32em] text-accent-violet/90 typing-cursor min-h-[1rem]"
           >
             {typed}
           </motion.p>
@@ -353,7 +353,7 @@ export default function Hero() {
                           boxShadow: `0 0 10px ${tint.dot}`,
                         }}
                       />
-                      <span className="font-mono text-[9px] text-slate-500 tracking-[0.2em]">
+                      <span className="font-mono text-[11px] text-slate-400 tracking-[0.2em]">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                     </div>
@@ -362,7 +362,7 @@ export default function Hero() {
                       {item.value}
                     </div>
 
-                    <div className="relative text-[10px] uppercase tracking-[0.18em] text-slate-400 leading-tight">
+                    <div className="relative text-[11px] uppercase tracking-[0.18em] text-slate-300 leading-tight">
                       {item.label}
                     </div>
                   </motion.div>
@@ -419,7 +419,7 @@ export default function Hero() {
               </div>
 
               <div className="text-center space-y-0.5">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
                   Based in
                 </p>
                 <p className="text-sm font-medium text-slate-200">
@@ -431,19 +431,19 @@ export default function Hero() {
                 style={{ borderTop: '1px solid var(--border-soft)' }}
               >
                 <div className="px-3 py-3">
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-slate-400 mb-1.5">
                     Hành chính
                   </p>
                   <p className="font-medium text-slate-200">Văn phòng · Nhân sự · Pháp lý</p>
                 </div>
                 <div className="px-3 py-3 border-l" style={{ borderColor: 'var(--border-soft)' }}>
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-slate-400 mb-1.5">
                     Chuyên ngành
                   </p>
                   <p className="font-medium text-slate-200">Luật Kinh Tế · Tài Chính</p>
                 </div>
                 <div className="col-span-2 px-3 py-3 border-t" style={{ borderColor: 'var(--border-soft)' }}>
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 mb-1.5">
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-slate-400 mb-1.5">
                     Định hướng
                   </p>
                   <p className="font-medium text-slate-200 leading-relaxed">

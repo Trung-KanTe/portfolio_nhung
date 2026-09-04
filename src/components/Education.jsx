@@ -50,7 +50,7 @@ export default function Education() {
           <WaterfallItem className="glass-card-hover p-6 md:p-7">
             <div className="flex items-start justify-between gap-3 mb-2">
               <p className="text-sm font-semibold text-slate-100">{education.degree}</p>
-              <span className="font-mono text-[10px] text-accent-violet/60 tracking-wider">
+              <span className="font-mono text-[11px] text-accent-violet/80 tracking-wider">
                 01
               </span>
             </div>
@@ -125,7 +125,7 @@ export default function Education() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-3 mb-1">
                       <p className="text-sm font-semibold text-slate-100">{aw.name}</p>
-                      <span className="font-mono text-[10px] text-accent-violet/60 tracking-wider">
+                      <span className="font-mono text-[11px] text-accent-violet/80 tracking-wider">
                         {String(idx + 1).padStart(2, '0')}
                       </span>
                     </div>
@@ -146,7 +146,7 @@ export default function Education() {
                 <p className="text-sm font-semibold text-slate-100">
                   {certification.name}
                 </p>
-                <span className="font-mono text-[10px] text-accent-violet/60 tracking-wider">
+                <span className="font-mono text-[11px] text-accent-violet/80 tracking-wider">
                   02
                 </span>
               </div>

@@ -64,7 +64,7 @@ function SkillCard({ category, index }) {
             </div>
             <h3 className="text-sm font-semibold text-slate-100">{category.title}</h3>
           </div>
-          <span className="font-mono text-[10px] tracking-wider text-accent-violet/60">
+          <span className="font-mono text-[11px] tracking-wider text-accent-violet/80">
             {String(index + 1).padStart(2, '0')}
           </span>
         </div>
@@ -75,7 +75,7 @@ function SkillCard({ category, index }) {
             return (
               <span
                 key={skill.name}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] text-slate-200 transition-colors"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs text-slate-200 transition-colors"
                 style={{
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-soft)',

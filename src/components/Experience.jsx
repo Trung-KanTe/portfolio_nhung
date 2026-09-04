@@ -21,7 +21,7 @@ export default function Experience() {
             <h2 className="section-title text-slate-100">
               Nơi tôi đã <span className="gradient-text-shine bg-clip-text text-transparent">làm việc.</span>
             </h2>
-            <p className="text-slate-400 leading-relaxed mt-4">
+            <p className="text-[15px] text-slate-400 leading-relaxed mt-4">
               Kinh nghiệm thực tế trong lĩnh vực hành chính, nhân sự và pháp lý
               tại các doanh nghiệp.
             </p>
@@ -94,7 +94,7 @@ export default function Experience() {
                           />
                           {project.name}
                         </p>
-                        <ul className="text-sm text-slate-400 space-y-1.5 pl-3">
+                        <ul className="text-[15px] text-slate-400 space-y-1.5 pl-3">
                           {project.details.map((detail) => (
                             <li
                               key={detail}
