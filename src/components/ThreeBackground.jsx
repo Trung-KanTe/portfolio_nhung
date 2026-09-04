@@ -1,13 +1,13 @@
 import { Suspense, memo, useMemo, useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import useReducedMotion from '../hooks/useReducedMotion'
+import usePerfTier from '../hooks/usePerfTier'
 
 const SIZE = 36
-const SEGS = 48        // reduced from 80 → 48 (2401 vertices vs 6561)
+const SEGS = 40        // fewer segments → cheaper vertex loop (1681 verts)
 
-const COLOR_DEEP = '#1e1b4b'
-const COLOR_MID  = '#7c3aed'
+const COLOR_DEEP = '#4b1b32'
+const COLOR_MID  = '#db2777'
 const COLOR_HIGH = '#22d3ee'
 
 function Terrain() {
@@ -20,21 +20,40 @@ function Terrain() {
     return g
   }, [])
 
-  const cDeep = useMemo(() => new THREE.Color(COLOR_DEEP), [])
-  const cMid  = useMemo(() => new THREE.Color(COLOR_MID), [])
-  const cHigh = useMemo(() => new THREE.Color(COLOR_HIGH), [])
-  const tmp   = useMemo(() => new THREE.Color(), [])
+  // Precompute a small color lookup gradient once — avoids per-vertex
+  // Color.lerp allocations and buffer color re-uploads every frame.
+  const colorLUT = useMemo(() => {
+    const steps = 32
+    const cDeep = new THREE.Color(COLOR_DEEP)
+    const cMid = new THREE.Color(COLOR_MID)
+    const cHigh = new THREE.Color(COLOR_HIGH)
+    const tmp = new THREE.Color()
+    const lut = new Float32Array(steps * 3)
+    for (let i = 0; i < steps; i++) {
+      const c = i / (steps - 1)
+      if (c < 0.5) tmp.copy(cDeep).lerp(cMid, c * 2)
+      else tmp.copy(cMid).lerp(cHigh, (c - 0.5) * 2)
+      lut[i * 3] = tmp.r
+      lut[i * 3 + 1] = tmp.g
+      lut[i * 3 + 2] = tmp.b
+    }
+    return { lut, steps }
+  }, [])
+
   const frameCount = useRef(0)
 
   useFrame((state) => {
-    // Throttle: update every 2nd frame (~30fps instead of 60fps)
+    // Throttle: only update every 3rd frame (~20fps for the wave motion,
+    // which is plenty for a slow ambient background).
     frameCount.current++
-    if (frameCount.current % 2 !== 0) return
+    if (frameCount.current % 3 !== 0) return
 
     const t = state.clock.elapsedTime * 0.28
     const positions = geometry.attributes.position.array
     const colors = geometry.attributes.color.array
     const base = geometry.userData.base
+    const { lut, steps } = colorLUT
+    const maxIdx = steps - 1
 
     for (let i = 0; i < positions.length; i += 3) {
       const x = base[i]
@@ -48,15 +67,12 @@ function Terrain() {
       positions[i + 1] = h
 
       const tint = (h + 1.7) / 3.4
-      const c = Math.max(0, Math.min(1, tint))
-      if (c < 0.5) {
-        tmp.copy(cDeep).lerp(cMid, c * 2)
-      } else {
-        tmp.copy(cMid).lerp(cHigh, (c - 0.5) * 2)
-      }
-      colors[i]     = tmp.r
-      colors[i + 1] = tmp.g
-      colors[i + 2] = tmp.b
+      const c = tint < 0 ? 0 : tint > 1 ? 1 : tint
+      const li = (c * maxIdx + 0.5) | 0
+      const o = li * 3
+      colors[i] = lut[o]
+      colors[i + 1] = lut[o + 1]
+      colors[i + 2] = lut[o + 2]
     }
 
     geometry.attributes.position.needsUpdate = true
@@ -107,13 +123,14 @@ function Scene() {
 }
 
 function ThreeBackground() {
-  const reduce = useReducedMotion()
+  const tier = usePerfTier()
   const [visible, setVisible] = useState(false)
+  const [tabActive, setTabActive] = useState(true)
   const containerRef = useRef(null)
 
   // Only render Canvas when component is in viewport
   useEffect(() => {
-    if (reduce) return
+    if (tier !== 'high') return
     const el = containerRef.current
     if (!el) return
 
@@ -123,9 +140,18 @@ function ThreeBackground() {
     )
     observer.observe(el)
     return () => observer.disconnect()
-  }, [reduce])
+  }, [tier])
 
-  if (reduce) return null
+  // Pause the render loop when the tab is hidden (saves battery/CPU).
+  useEffect(() => {
+    const onVis = () => setTabActive(!document.hidden)
+    document.addEventListener('visibilitychange', onVis)
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [])
+
+  // Only the "high" tier gets the WebGL terrain. Low-power / reduced-motion
+  // devices skip it entirely — this is the single biggest CPU/GPU saver.
+  if (tier !== 'high') return null
 
   return (
     <div
@@ -139,7 +165,7 @@ function ThreeBackground() {
           dpr={[1, 1.25]}
           camera={{ position: [0, 3.2, 7], fov: 60, near: 0.1, far: 60 }}
           gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
-          frameloop="always"
+          frameloop={tabActive ? 'always' : 'never'}
           style={{ background: 'transparent' }}
         >
           <Suspense fallback={null}>

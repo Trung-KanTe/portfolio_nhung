@@ -70,7 +70,7 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-slate-400 leading-relaxed mt-4">
-              Sẵn sàng cho các vị trí Hành chính - Nhân sự tại doanh nghiệp.
+              Sẵn sàng cho các vị trí Pháp chế - Hành chính - Nhân sự tại doanh nghiệp.
               Tôi thường phản hồi trong vòng 24 giờ.
             </p>
           </WaterfallItem>

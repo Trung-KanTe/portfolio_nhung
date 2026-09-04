@@ -25,7 +25,7 @@ export const personalInfo = {
     'Office Management',
   ],
   objective:
-    'Nhân viên Hành chính - Nhân sự với nền tảng Luật Kinh Tế và kinh nghiệm thực tế tại các doanh nghiệp lớn như Mắt Bão và AXYS. Có khả năng quản lý văn phòng, hỗ trợ tuyển dụng, soạn thảo hợp đồng, và xử lý các công việc hành chính - pháp lý. Đồng tác giả nhiều bài nghiên cứu khoa học được xuất bản. Mong muốn phát triển sự nghiệp trong lĩnh vực nhân sự và hành chính doanh nghiệp.',
+    'Định hướng phát triển sự nghiệp trong lĩnh vực Pháp chế doanh nghiệp, tận dụng nền tảng pháp luật, kiến thức chuyên sâu đang được đào tạo và kinh nghiệm Hành chính – Nhân sự để từng bước phát triển chuyên môn về hợp đồng, tuân thủ pháp luật và quản trị nội bộ doanh nghiệp.',
 }
 
 export const stats = [

@@ -25,7 +25,7 @@ const ABOUT_PARAGRAPH =
 
 export default function About() {
   return (
-    <section id="about" className="section-padding">
+    <section id="about" className="section-padding cv-auto">
       <div className="max-w-6xl mx-auto">
         <WaterfallContainer
           className="grid md:grid-cols-[1.4fr_1fr] items-end gap-8 mb-12"

@@ -23,7 +23,7 @@ export default function Education() {
   }, [openImage])
 
   return (
-    <section id="education" className="section-padding">
+    <section id="education" className="section-padding cv-auto">
       <div className="max-w-4xl mx-auto">
         <WaterfallContainer className="mb-12 max-w-2xl" amount={0.4}>
           <WaterfallItem>

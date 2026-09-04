@@ -4,7 +4,7 @@ import { HiOutlineMail } from 'react-icons/hi'
 export default function Footer() {
   return (
     <footer
-      className="relative backdrop-blur-xl"
+      className="relative backdrop-blur-md"
       style={{
         backgroundColor: 'var(--bg-app-80)',
         borderTop: '1px solid var(--border-soft)',

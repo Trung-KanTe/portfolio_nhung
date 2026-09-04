@@ -96,7 +96,7 @@ function SkillCard({ category, index }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding cv-auto">
       <div className="max-w-7xl mx-auto">
         <WaterfallContainer className="mb-12 max-w-2xl" amount={0.4}>
           <WaterfallItem>

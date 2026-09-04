@@ -1,13 +1,14 @@
 import { memo } from 'react'
+import usePerfTier from '../hooks/usePerfTier'
 
 // Reduced from 10 sheets to 6
 const SHEETS = [
-  { left: '5%',  width: 120, blur: 38, delay: 0,    dur: 10, color: 'rgba(139,92,246,0.20)' },
-  { left: '20%', width: 140, blur: 44, delay: -6,   dur: 9,  color: 'rgba(34,211,238,0.15)' },
-  { left: '38%', width: 100, blur: 34, delay: -1.5, dur: 11, color: 'rgba(167,139,250,0.20)' },
-  { left: '55%', width: 110, blur: 36, delay: -2,   dur: 10, color: 'rgba(139,92,246,0.18)' },
-  { left: '72%', width: 130, blur: 42, delay: -7,   dur: 12, color: 'rgba(34,211,238,0.16)' },
-  { left: '88%', width: 95,  blur: 32, delay: -5,   dur: 9,  color: 'rgba(99,102,241,0.18)' },
+  { left: '5%',  width: 120, blur: 30, delay: 0,    dur: 10, color: 'rgba(236,72,153,0.20)' },
+  { left: '20%', width: 140, blur: 34, delay: -6,   dur: 9,  color: 'rgba(34,211,238,0.15)' },
+  { left: '38%', width: 100, blur: 28, delay: -1.5, dur: 11, color: 'rgba(244,114,182,0.20)' },
+  { left: '55%', width: 110, blur: 30, delay: -2,   dur: 10, color: 'rgba(236,72,153,0.18)' },
+  { left: '72%', width: 130, blur: 34, delay: -7,   dur: 12, color: 'rgba(34,211,238,0.16)' },
+  { left: '88%', width: 95,  blur: 26, delay: -5,   dur: 9,  color: 'rgba(244,63,94,0.18)' },
 ]
 
 // Reduced from 9 sparkles to 5
@@ -19,8 +20,8 @@ const SPARKLES = [
   { left: '88%', delay: -3,   dur: 5 },
 ]
 
-// Reduced from 40 snowflakes to 12
-const SNOWFLAKES = Array.from({ length: 12 }).map((_, i) => {
+// Reduced from 40 snowflakes to 10
+const SNOWFLAKES = Array.from({ length: 10 }).map((_, i) => {
   const seed = (i * 9301 + 49297) % 233280
   const rand = (s) => Math.abs((Math.sin(s) * 10000) % 1)
   const tints = [
@@ -105,19 +106,44 @@ function Snowflake({ left, size, delay, dur, drift, swayDur, color }) {
   )
 }
 
+/**
+ * Lightweight static gradient used on low-power / reduced-motion devices.
+ * No animation, no mix-blend, no per-node blur layers.
+ */
+function StaticBackdrop() {
+  return (
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 z-0 pointer-events-none"
+      style={{
+        background:
+          'radial-gradient(60% 50% at 20% 15%, rgba(219,39,119,0.16), transparent 60%),' +
+          'radial-gradient(55% 55% at 85% 30%, rgba(34,211,238,0.10), transparent 60%),' +
+          'radial-gradient(ellipse at center, rgba(7,3,24,0.35) 0%, rgba(7,3,24,0.7) 100%)',
+      }}
+    />
+  )
+}
+
 function WaterfallBackground() {
+  const tier = usePerfTier()
+
+  // On mobile / weak devices / reduced-motion, skip the animated blur+blend
+  // layers entirely and show a cheap static gradient instead.
+  if (tier !== 'high') return <StaticBackdrop />
+
   return (
     <div
       aria-hidden="true"
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
       style={{ contain: 'strict' }}
     >
-      {/* Static aurora blobs - reduced to 2 */}
+      {/* Static aurora blobs - reduced to 2, smaller blur radius */}
       <div
         className="absolute -top-40 -left-32 w-[44vmax] h-[44vmax] rounded-full mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle, rgba(124,58,237,0.28), transparent 60%)',
-          filter: 'blur(110px)',
+          background: 'radial-gradient(circle, rgba(219,39,119,0.28), transparent 60%)',
+          filter: 'blur(80px)',
           animation: 'auroraDrift 22s ease-in-out infinite',
           willChange: 'transform',
         }}
@@ -126,7 +152,7 @@ function WaterfallBackground() {
         className="absolute top-1/4 -right-32 w-[40vmax] h-[40vmax] rounded-full mix-blend-screen"
         style={{
           background: 'radial-gradient(circle, rgba(34,211,238,0.20), transparent 60%)',
-          filter: 'blur(120px)',
+          filter: 'blur(90px)',
           animation: 'auroraDrift 28s ease-in-out -7s infinite',
           willChange: 'transform',
         }}
@@ -158,7 +184,7 @@ function WaterfallBackground() {
         className="absolute inset-x-0 bottom-0 h-[40vh] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 100%, rgba(167,139,250,0.18) 0%, rgba(34,211,238,0.08) 30%, transparent 70%)',
+            'radial-gradient(ellipse at 50% 100%, rgba(244,114,182,0.18) 0%, rgba(34,211,238,0.08) 30%, transparent 70%)',
           filter: 'blur(20px)',
           mixBlendMode: 'screen',
         }}
