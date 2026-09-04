@@ -199,21 +199,19 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 
   .gradient-text-shine {
     @apply bg-clip-text text-transparent;
-    /* Brightened palette so every part of the text stays legible on the dark
-       background. Light pink → pink → light cyan, no deep red/magenta stops. */
+    /* Matches the Download CV button palette (btn-primary):
+       pink → hot pink → rose-red. */
     background-image: linear-gradient(
       135deg,
-      #fce7f3 0%,
-      #f9a8d4 22%,
-      #f472b6 48%,
-      #7dd3fc 74%,
-      #fce7f3 100%
+      #f472b6 0%,
+      #ec4899 45%,
+      #f43f5e 100%
     );
     background-size: 220% auto;
     animation: gradientX 7s ease infinite;
-    /* Dark halo lifts the translucent glyphs off the colorful background.
-       drop-shadow works on clipped text where text-shadow cannot.
-       Stacked shadows: tight crisp edge + wider halo for reliable contrast. */
+    /* Dark halo lifts the glyphs off the dark background so the deeper
+       button colors stay legible as text.
+       drop-shadow works on clipped text where text-shadow cannot. */
     filter:
       drop-shadow(0 1px 2px rgba(7, 3, 24, 1))
       drop-shadow(0 0 6px rgba(7, 3, 24, 0.95))
@@ -470,7 +468,7 @@ body [class~="hover:text-white"]:hover       { color: var(--text-strong); }
 
 /* ── Light mode polish ──────────── */
 :root.light .gradient-text-shine {
-  background-image: linear-gradient(135deg, #be185d, #db2777, #e11d8f, #0891b2);
+  background-image: linear-gradient(135deg, #ec4899, #db2777, #f43f5e);
   filter: none;
 }
 
